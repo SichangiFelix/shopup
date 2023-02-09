@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.contrib import admin
 from . import views
+from products import views as product_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,12 @@ urlpatterns = [
     path('contact/', views.contact_page),
     path('login/', views.login_page),
     path('register/', views.register_page),
+
+    #products
+    path('products-fbv/', product_views.product_list_view),
+    path('products/', product_views.ProductListView.as_view()),
+    path('products-fbv/<int:pk>', product_views.product_detail_view),
+    path('products/<int:pk>', product_views.ProductDetailView.as_view()),
 ]
 
 if settings.DEBUG:
